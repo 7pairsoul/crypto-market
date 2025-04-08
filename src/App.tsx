@@ -5,14 +5,16 @@ import { Footer } from './components/Footer';
 import './App.css';
 
 function App() {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/crypto-market">
       <div className="app">
         <header className="app-header">
           <div className="container">
             <div className="header-content">
               <Link to="/" className="header-title">
-                <img src="/btc.svg" alt="Bitcoin" width={30} height={30} />
+                <img src={`${baseUrl}btc.svg`} alt="Bitcoin" width={30} height={30} />
                 <h1>Crypto Market</h1>
               </Link>
             </div>
