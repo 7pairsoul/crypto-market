@@ -1,17 +1,33 @@
-import { CoinList } from './components/CoinList'
-import './App.css'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { CoinList } from './components/CoinList';
+import { CoinDetail } from './components/CoinDetail';
+import { Footer } from './components/Footer';
+import './App.css';
 
 function App() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1>Crypto Market</h1>
-      </header>
-      <main>
-        <CoinList />
-      </main>
-    </div>
-  )
+    <BrowserRouter>
+      <div className="app flex flex-col min-h-screen">
+        <header className="app-header">
+          <div className="container">
+            <div className="header-content">
+              <Link to="/" className="header-title">
+                <img src="/btc.svg" alt="Bitcoin" width={30} height={30} />
+                <h1 className='header-title'>Crypto Market</h1>
+              </Link>
+            </div>
+          </div>
+        </header>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<CoinList />} />
+            <Route path="/coin/:id" element={<CoinDetail />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
