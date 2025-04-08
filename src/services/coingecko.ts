@@ -83,6 +83,18 @@ export interface CoinMarketData {
   };
 }
 
+export interface MarketData {
+  id: string;
+  symbol: string;
+  name: string;
+  image: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  price_change_percentage_24h: number;
+  total_volume: number;
+}
+
 export const getCoins = async (page: number = 1, perPage: number = 20): Promise<Coin[]> => {
   const url = `${API_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${perPage}&page=${page}&sparkline=false`;
   const cacheKey = `coins_list_page_${page}`;
@@ -123,6 +135,37 @@ export const getCoinMarketData = async (
   const cacheKey = `market_${coinId}_${vsCurrency}`;
   
   return fetchWithCache<CoinMarketData>(url, cacheKey);
+};
+
+export const searchCoins = async (query: string): Promise<MarketData[]> => {
+  if (!query) return [];
+  
+  try {
+    // For demo API, we'll search directly in the markets endpoint with a filter
+    // This is more efficient than using the search endpoint which has stricter rate limits
+    const response = await fetch(
+      `${API_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=24h`
+    );
+
+    if (!response.ok) {
+      if (response.status === 429) {
+        throw new Error('Rate limit exceeded. Please try again in a minute.');
+      }
+      throw new Error('Network response was not ok');
+    }
+
+    const data: MarketData[] = await response.json();
+    
+    // Filter coins client-side for the demo API
+    return data.filter(coin => 
+      coin.name.toLowerCase().includes(query.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(query.toLowerCase())
+    ).slice(0, 10); // Limit to top 10 matches
+    
+  } catch (error) {
+    console.error('Error searching coins:', error);
+    throw error;
+  }
 };
 
 // Add more API methods as needed... 

@@ -7,18 +7,18 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-      <div className="app flex flex-col min-h-screen">
+      <div className="app">
         <header className="app-header">
           <div className="container">
             <div className="header-content">
               <Link to="/" className="header-title">
                 <img src="/btc.svg" alt="Bitcoin" width={30} height={30} />
-                <h1 className='header-title'>Crypto Market</h1>
+                <h1>Crypto Market</h1>
               </Link>
             </div>
           </div>
         </header>
-        <main className="flex-grow">
+        <main>
           <Routes>
             <Route path="/" element={<CoinList />} />
             <Route path="/coin/:id" element={<CoinDetail />} />
