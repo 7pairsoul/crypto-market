@@ -58,7 +58,7 @@ export const fetchWithCache = async <T>(
   const apiKey = import.meta.env.VITE_COINGECKO_API_KEY;
   const headers = {
     ...options?.headers,
-    ...(apiKey ? { 'x-cg-pro-api-key': apiKey } : {}),
+    ...(apiKey ? { 'x-cg-demo-api-key': apiKey } : {}),
   };
 
   // Fetch fresh data
