@@ -1,54 +1,96 @@
-# React + TypeScript + Vite
+# Crypto Market Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time cryptocurrency market dashboard built with React, TypeScript, and Vite. This project provides live cryptocurrency price tracking and market data visualization.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Current Features
+- 📊 Real-time cryptocurrency price tracking
+- 💰 Top 20 cryptocurrencies by market cap
+- 📈 24-hour price change indicators
+- 💎 Market cap and volume information
+- 🌙 Dark theme optimized for crypto trading
+- 📱 Responsive design for all devices
+- 🔄 Auto-refresh data every 60 seconds
 
-## Expanding the ESLint configuration
+### Planned Features
+- 📈 Detailed price charts (Line/Candlestick)
+  - Historical price data
+  - Multiple timeframe options
+  - Technical indicators
+- 💡 Individual coin pages with:
+  - Detailed market statistics
+  - Trading volume analysis
+  - Price history
+  - Market sentiment indicators
+- 🔍 Search functionality
+- 📊 Additional market metrics
+- 🌓 Light/Dark theme toggle
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- ⚡️ [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+- ⚛️ [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+- 📘 [TypeScript](https://www.typescriptlang.org/) - JavaScript with syntax for types
+- 🎨 CSS Modules for styling
+- 📡 [CoinGecko API](https://www.coingecko.com/en/api) - Cryptocurrency data
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/crypto-market.git
+cd crypto-market
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Install dependencies
+```bash
+npm install
 ```
+
+3. Start the development server
+```bash
+npm run dev
+```
+
+4. Open your browser and visit `http://localhost:5173`
+
+## Project Structure
+
+```
+crypto-market/
+├── src/
+│   ├── components/     # React components
+│   ├── services/       # API services
+│   ├── assets/         # Static assets
+│   ├── App.tsx         # Main application component
+│   └── main.tsx        # Application entry point
+├── public/             # Public assets
+└── package.json        # Project dependencies
+```
+
+## API Usage
+
+This project uses the free CoinGecko API. Please note the following rate limits:
+- 10-30 calls/minute for the free tier
+- No API key required for basic endpoints
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [CoinGecko](https://www.coingecko.com/) for providing the cryptocurrency data API
+- [Vite](https://vitejs.dev/) for the amazing build tool
+- [React](https://reactjs.org/) for the frontend framework
